@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <title>Form Test</title>
+<style>
+body {
+  font-family:'Proxima Nova Light',sans-serif;
+  font-weight:300;
+  color:#392D5D;
+  font-size:21px;
+  line-height:30px;
+  padding: 60px;
+}
+a:link {
+  color:#E51E57;
+  /*background-color: #FDF2F5;*/
+  background-color: rgba(229,30,87,0.06);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(229,30,87,0.1);
+  padding:2px;
+}
+
+a:visited {
+  color:#931BD9;
+  background-color: rgba(147,27,217,0.06);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(147,27,217,0.1);;
+}
+
+a:hover {
+  color:#E51E57;
+  /*background-color: #FAD2DD;*/
+  background-color: rgba(229,30,87,0.12);
+  border-bottom: 1px solid rgba(229,30,87,0.5);
+}
+
+a:visited:hover {
+  color:#931BD9;
+  background-color: rgba(147,27,217,0.12);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(147,27,217,0.5);;
+}
+
+a:active {
+  background-color: rgba(229,30,87,0.2);
+}
+
+a:visited:active {
+  background-color:rgba(147,27,217,0.2);
+}
+
+div.dark {
+  background-color:#111339;
+  padding: 30px;
+  color:#fff;
+}
+
+div.dark a:link {
+  color: #F5A5BC;
+  background-color: rgba(245,165,188,0.1);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(245,165,188,0.3);
+  padding:2px;
+}
+div.dark a:visited {
+  color: #D4A4F0;
+  background-color: rgba(212,164,240,0.1);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(212,164,240,0.3);
+}
+div.dark a:hover {
+  color: #F5A5BC;
+  background-color: rgba(245,165,188,0.2);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(245,165,188,0.7);
+}
+div.dark a:visited:hover {
+  color: #D4A4F0;
+  background-color: rgba(212,164,240,0.2);
+  text-decoration:none;
+  border-bottom: 1px solid rgba(212,164,240,0.7);
+}
+div.dark a:active {
+  background-color: rgba(245,165,188,0.3);
+}
+div.dark a:visited:active {
+  background-color: rgba(212,164,240,0.3);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  column-width: 10em;
+}
+</style>
+<script>
+	function sendJSON(pl){
+	  
+		// Creating a XHR object
+		let xhr = new XMLHttpRequest();
+		let url = "https://4ee9zra3dc.us-east-1.awsapprunner.com/imagine";
+
+		// open a connection
+		xhr.open("POST", url, true);
+
+		// Set the request header i.e. which type of content you are sending
+		xhr.setRequestHeader("Content-Type", "application/json");
+
+		// Create a state change callback
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+
+				// Print received data from server
+				result.innerHTML = this.responseText;
+
+			}
+		};
+
+		// Converting JSON data to string
+		var data = pl;
+
+		// Sending data with the request
+		xhr.send(data);
+    }
+	const style = ["futuristic", "utopian", "surreal","abstract expressionist","impressionist","hyper realistic"];
+	function compileya() {
+		var theprompt = "\{\"prompt\": \"make " + style[Math.floor(Math.random()*style.length)] + " painting about ";
+		var yourvalues = '';
+        const btn = document.querySelector('#btn');
+		let checkboxes = document.querySelectorAll('input[name="value"]:checked');
+		let values = [];
+		checkboxes.forEach((checkbox) => {
+			values.push(checkbox.value);
+		});
+		theprompt += values;
+		theprompt += "\" \}";
+		const results = document.querySelector('.printit pre');
+		results.innerText = theprompt;
+		//sendJSON(theprompt);
+	}
+</script>
+</head>
+<body>
+
+<h2>Select your top values from below:</h2>
+
+<form id="theform" alction="https://4ee9zra3dc.us-east-1.awsapprunner.com/imagine">
+<div class="container">
+<input id="value-Abundance" name="value" type="checkbox" value="Abundance"/><label class="inline" for="value-Abundance">Abundance</label><br />
+<input id="value-Adventure" name="value" type="checkbox" value="Adventure"/><label class="inline" for="value-Adventure">Adventure</label><br />
+<input id="value-Alignment" name="value" type="checkbox" value="Alignment"/><label class="inline" for="value-Alignment">Alignment</label><br />
+<input id="value-Altruism" name="value" type="checkbox" value="Altruism"/><label class="inline" for="value-Altruism">Altruism</label><br />
+<input id="value-Authenticity" name="value" type="checkbox" value="Authenticity"/><label class="inline" for="value-Authenticity">Authenticity</label><br />
+<input id="value-Awareness" name="value" type="checkbox" value="Awareness"/><label class="inline" for="value-Awareness">Awareness</label><br />
+<input id="value-Balance" name="value" type="checkbox" value="Balance"/><label class="inline" for="value-Balance">Balance</label><br />
+<input id="value-Belonging" name="value" type="checkbox" value="Belonging"/><label class="inline" for="value-Belonging">Belonging</label><br />
+<input id="value-Caring" name="value" type="checkbox" value="Caring"/><label class="inline" for="value-Caring">Caring</label><br />
+<input id="value-Clarity" name="value" type="checkbox" value="Clarity"/><label class="inline" for="value-Clarity">Clarity</label><br />
+<input id="value-Commitment" name="value" type="checkbox" value="Commitment"/><label class="inline" for="value-Commitment">Commitment</label><br />
+<input id="value-Communication" name="value" type="checkbox" value="Communication"/><label class="inline" for="value-Communication">Communication</label><br />
+<input id="value-Community" name="value" type="checkbox" value="Community"/><label class="inline" for="value-Community">Community</label><br />
+<input id="value-Compassion" name="value" type="checkbox" value="Compassion"/><label class="inline" for="value-Compassion">Compassion</label><br />
+<input id="value-Conscientiousness" name="value" type="checkbox" value="Conscientiousness"/><label class="inline" for="value-Conscientiousness">Conscientiousness</label><br />
+<input id="value-Courage" name="value" type="checkbox" value="Courage"/><label class="inline" for="value-Courage">Courage</label><br />
+<input id="value-Creativity" name="value" type="checkbox" value="Creativity"/><label class="inline" for="value-Creativity">Creativity</label><br />
+<input id="value-Curiosity" name="value" type="checkbox" value="Curiosity"/><label class="inline" for="value-Curiosity">Curiosity</label><br />
+<input id="value-Discipline" name="value" type="checkbox" value="Discipline"/><label class="inline" for="value-Discipline">Discipline</label><br />
+<input id="value-Diversity" name="value" type="checkbox" value="Diversity"/><label class="inline" for="value-Diversity">Diversity</label><br />
+<input id="value-Empathy" name="value" type="checkbox" value="Empathy"/><label class="inline" for="value-Empathy">Empathy</label><br />
+<input id="value-Exploration" name="value" type="checkbox" value="Exploration"/><label class="inline" for="value-Exploration">Exploration</label><br />
+<input id="value-Expression" name="value" type="checkbox" value="Expression"/><label class="inline" for="value-Expression">Expression</label><br />
+<input id="value-Flexibility" name="value" type="checkbox" value="Flexibility"/><label class="inline" for="value-Flexibility">Flexibility</label><br />
+<input id="value-Freedom" name="value" type="checkbox" value="Freedom"/><label class="inline" for="value-Freedom">Freedom</label><br />
+<input id="value-Fun" name="value" type="checkbox" value="Fun"/><label class="inline" for="value-Fun">Fun</label><br />
+<input id="value-Generosity" name="value" type="checkbox" value="Generosity"/><label class="inline" for="value-Generosity">Generosity</label><br />
+<input id="value-Genuinity" name="value" type="checkbox" value="Genuinity"/><label class="inline" for="value-Genuinity">Genuinity</label><br />
+<input id="value-Gratitude" name="value" type="checkbox" value="Gratitude"/><label class="inline" for="value-Gratitude">Gratitude</label><br />
+<input id="value-Growth" name="value" type="checkbox" value="Growth"/><label class="inline" for="value-Growth">Growth</label><br />
+<input id="value-Helpfulness" name="value" type="checkbox" value="Helpfulness"/><label class="inline" for="value-Helpfulness">Helpfulness</label><br />
+<input id="value-Humility" name="value" type="checkbox" value="Humility"/><label class="inline" for="value-Humility">Humility</label><br />
+<input id="value-Humor" name="value" type="checkbox" value="Humor"/><label class="inline" for="value-Humor">Humor</label><br />
+<input id="value-Independence" name="value" type="checkbox" value="Independence"/><label class="inline" for="value-Independence">Independence</label><br />
+<input id="value-Integrity" name="value" type="checkbox" value="Integrity"/><label class="inline" for="value-Integrity">Integrity</label><br />
+<input id="value-Joy" name="value" type="checkbox" value="Joy"/><label class="inline" for="value-Joy">Joy</label><br />
+<input id="value-Kindness" name="value" type="checkbox" value="Kindness"/><label class="inline" for="value-Kindness">Kindness</label><br />
+<input id="value-Learning" name="value" type="checkbox" value="Learning"/><label class="inline" for="value-Learning">Learning</label><br />
+<input id="value-Love" name="value" type="checkbox" value="Love"/><label class="inline" for="value-Love">Love</label><br />
+<input id="value-Oneness" name="value" type="checkbox" value="Oneness"/><label class="inline" for="value-Oneness">Oneness</label><br />
+<input id="value-Optimism" name="value" type="checkbox" value="Optimism"/><label class="inline" for="value-Optimism">Optimism</label><br />
+<input id="value-Passion" name="value" type="checkbox" value="Passion"/><label class="inline" for="value-Passion">Passion</label><br />
+<input id="value-Patience" name="value" type="checkbox" value="Patience"/><label class="inline" for="value-Patience">Patience</label><br />
+<input id="value-Peace" name="value" type="checkbox" value="Peace"/><label class="inline" for="value-Peace">Peace</label><br />
+<input id="value-Perseverance" name="value" type="checkbox" value="Perseverance"/><label class="inline" for="value-Perseverance">Perseverance</label><br />
+<input id="value-Positivity" name="value" type="checkbox" value="Positivity"/><label class="inline" for="value-Positivity">Positivity</label><br />
+<input id="value-Purposefulness" name="value" type="checkbox" value="Purposefulness"/><label class="inline" for="value-Purposefulness">Purposefulness</label><br />
+<input id="value-Respect" name="value" type="checkbox" value="Respect"/><label class="inline" for="value-Respect">Respect</label><br />
+<input id="value-Responsibility" name="value" type="checkbox" value="Responsibility"/><label class="inline" for="value-Responsibility">Responsibility</label><br />
+<input id="value-Serenity" name="value" type="checkbox" value="Serenity"/><label class="inline" for="value-Serenity">Serenity</label><br />
+<input id="value-Simplicity" name="value" type="checkbox" value="Simplicity"/><label class="inline" for="value-Simplicity">Simplicity</label><br />
+<input id="value-Sincerity" name="value" type="checkbox" value="Sincerity"/><label class="inline" for="value-Sincerity">Sincerity</label><br />
+<input id="value-Solitude" name="value" type="checkbox" value="Solitude"/><label class="inline" for="value-Solitude">Solitude</label><br />
+<input id="value-Spirituality" name="value" type="checkbox" value="Spirituality"/><label class="inline" for="value-Spirituality">Spirituality</label><br />
+<input id="value-Synergy" name="value" type="checkbox" value="Synergy"/><label class="inline" for="value-Synergy">Synergy</label><br />
+<input id="value-Thoughtfulness" name="value" type="checkbox" value="Thoughtfulness"/><label class="inline" for="value-Thoughtfulness">Thoughtfulness</label><br />
+<input id="value-Transparency" name="value" type="checkbox" value="Transparency"/><label class="inline" for="value-Transparency">Transparency</label><br />
+<input id="value-Trust" name="value" type="checkbox" value="Trust"/><label class="inline" for="value-Trust">Trust</label><br />
+<input id="value-Unity" name="value" type="checkbox" value="Unity"/><label class="inline" for="value-Unity">Unity</label><br />
+<input id="value-Vulnerability" name="value" type="checkbox" value="Vulnerability"/><label class="inline" for="value-Vulnerability">Vulnerability</label><br />
+<input id="value-Wholeheartedness" name="value" type="checkbox" value="Wholeheartedness"/><label class="inline" for="value-Wholeheartedness">Wholeheartedness</label><br />
+<input id="value-Wisdom" name="value" type="checkbox" value="Wisdom"/><label class="inline" for="value-Wisdom">Wisdom</label><br />
+<input id="value-Wonder" name="value" type="checkbox" value="Wonder"/><label class="inline" for="value-Wonder">Wonder</label><br />
+</div>
+</form>
+
+<button id="btn" onclick="compileya(); return false;">Send It!</button>
+
+<div class="dark">
+<h2>Here is what will be sent to server:</h2>
+
+<div class="printit"><pre></pre></div>
+<p class="result"></p>
+</div>
+
+</body>
+</html>
